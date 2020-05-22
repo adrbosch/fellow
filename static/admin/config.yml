@@ -35,7 +35,12 @@ collections: # A list of collections the CMS should be able to edit
           - { label: Slug, name: slug, widget: hidden, default: 'contact' }
           - { label: Title, name: title, widget: string }
           - { label: Id, name: id, widget: number }
-          - { label: Language, name: lang, widget: string }
+          - label: 'Language'
+            name: 'lang'
+            widget: 'relation'
+            collection: 'postLanguage'
+            searchFields: ['title']
+            valueField: 'title'
           - {
               label: Featured Image,
               name: featuredImage,
@@ -112,6 +117,13 @@ collections: # A list of collections the CMS should be able to edit
             }
           - { label: Slug, name: slug, widget: hidden, default: 'blog' }
           - { label: Title, name: title, widget: string }
+          - { label: Id, name: id, widget: number }
+          - label: 'Language'
+            name: 'lang'
+            widget: 'relation'
+            collection: 'postLanguage'
+            searchFields: ['title']
+            valueField: 'title'
           - { label: Featured Image, name: featuredImage, widget: image }
           - { label: Subtitle, name: subtitle, widget: markdown }
           - label: 'Meta'
@@ -208,6 +220,13 @@ collections: # A list of collections the CMS should be able to edit
             }
           - { label: Slug, name: slug, widget: hidden, default: '' }
           - { label: Title, name: title, widget: string }
+          - { label: Id, name: id, widget: number }
+          - label: 'Language'
+            name: 'lang'
+            widget: 'relation'
+            collection: 'postLanguage'
+            searchFields: ['title']
+            valueField: 'title'
           - { label: Featured Image, name: featuredImage, widget: image }
           - { label: Subtitle, name: subtitle, widget: markdown, required: false }
           - { label: Body, name: body, widget: markdown }
@@ -259,6 +278,13 @@ collections: # A list of collections the CMS should be able to edit
         }
       - { label: Slug, name: slug, widget: string }
       - { label: Title, name: title, widget: string }
+      - { label: Id, name: id, widget: number }
+      - label: 'Language'
+        name: 'lang'
+        widget: 'relation'
+        collection: 'postLanguage'
+        searchFields: ['title']
+        valueField: 'title'
       - { label: Featured Image, name: featuredImage, widget: image }
       - { label: Body, name: body, widget: markdown }
       - label: 'Meta'
@@ -291,6 +317,13 @@ collections: # A list of collections the CMS should be able to edit
     fields: # The fields each document in this collection have
       - { label: Template, name: template, widget: hidden, default: SinglePost }
       - { label: Title, name: title, widget: string }
+      - { label: Id, name: id, widget: number }
+      - label: 'Language'
+        name: 'lang'
+        widget: 'relation'
+        collection: 'postLanguage'
+        searchFields: ['title']
+        valueField: 'title'
       - label: 'Status'
         name: 'status'
         widget: 'select'
@@ -346,6 +379,13 @@ collections: # A list of collections the CMS should be able to edit
     fields: # The fields each document in this collection have
       - { label: Template, name: template, widget: hidden, default: BlogIndex }
       - { label: Title, name: title, widget: string }
+      - { label: Id, name: id, widget: number }
+      - label: 'Language'
+        name: 'lang'
+        widget: 'relation'
+        collection: 'postLanguage'
+        searchFields: ['title']
+        valueField: 'title'
       - { label: Subtitle, name: subtitle, widget: string, required: false }
       - {
           label: Featured Image,
