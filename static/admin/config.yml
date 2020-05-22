@@ -454,3 +454,9 @@ collections: # A list of collections the CMS should be able to edit
               widget: string,
               required: false,
             }
+      - file: 'content/data/articles.json'
+        label: 'Content Language'
+        name: 'contentLanguage'
+        fields:
+        - { label: home, name: home, widget: string}
+        - { label: articles, name: articles, widget: list}
