@@ -1,5 +1,5 @@
 const postcssPresetEnv = require('postcss-preset-env')
-const languages = require('./src/data/languages')
+const languages = require('./content/data/languages')
 
 module.exports = {
   siteMetadata: {
