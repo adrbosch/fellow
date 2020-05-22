@@ -279,12 +279,12 @@ collections: # A list of collections the CMS should be able to edit
       - { label: Slug, name: slug, widget: string }
       - { label: Title, name: title, widget: string }
       - { label: Id, name: id, widget: number }
-          - label: 'Language'
-            name: 'lang'
-            widget: 'relation'
-            collection: 'postLanguage'
-            searchFields: ['title']
-            valueField: 'title'
+      - label: 'Language'
+        name: 'lang'
+        widget: 'relation'
+        collection: 'postLanguage'
+        searchFields: ['title']
+        valueField: 'title'
       - { label: Featured Image, name: featuredImage, widget: image }
       - { label: Body, name: body, widget: markdown }
       - label: 'Meta'
