@@ -457,9 +457,10 @@ collections: # A list of collections the CMS should be able to edit
 
   - name: 'languages'
     label: 'Languages'
+    extension: "json"
     delete: false # Prevent users from deleting documents in this collection
     editor:
-      preview: true
+      preview: false
     files:       
       - file: 'content/data/articles.json'
         label: 'Content Language'
