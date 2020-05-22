@@ -7,9 +7,9 @@ backend:
 media_library:
   name: uploadcare
   config:
-    publicKey: a73a170cb5cdef662983
+    publicKey: 415cccd261cc236a4fb8
     multiple: false
-    tabs: 'file camera url facebook gdrive'
+    tabs: 'file camera url gdrive'
     effects: 'crop,rotate,enhance,grayscale'
     imageShrink: '2000x2000'
     previewStep: true
@@ -34,6 +34,8 @@ collections: # A list of collections the CMS should be able to edit
             }
           - { label: Slug, name: slug, widget: hidden, default: 'contact' }
           - { label: Title, name: title, widget: string }
+          - { label: Id, name: id, widget: number }
+          - { label: Language, name: lang, widget: string }
           - {
               label: Featured Image,
               name: featuredImage,
@@ -370,6 +372,18 @@ collections: # A list of collections the CMS should be able to edit
               required: false,
             }
           - { label: Noindex, name: noindex, widget: boolean, required: false }
+
+  - name: postLanguage
+    label: Post Language
+    editor:
+      preview: false
+    folder: content/postLanguage
+    slug: '{{slug}}'
+    create: true # Allow users to create new documents in this collection
+    fields: # The fields each document in this collection have
+      - { label: Template, name: template, widget: hidden, default: BlogIndex }
+      - { label: Title, name: title, widget: string }
+      - { label: Subtitle, name: subtitle, widget: string, required: false }
 
   - name: 'settings'
     label: 'Settings'
