@@ -454,3 +454,17 @@ collections: # A list of collections the CMS should be able to edit
               widget: string,
               required: false,
             }
+
+  - name: 'languages'
+    label: 'Languages'
+    extension: "json"
+    delete: false # Prevent users from deleting documents in this collection
+    editor:
+      preview: false
+    files:       
+      - file: 'content/data/articles.json'
+        label: 'Content Language'
+        name: 'contentLanguage'
+        fields:
+        - { label: home, name: home, widget: string}
+        - { label: articles, name: articles, widget: list}
