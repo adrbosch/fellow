@@ -1,6 +1,9 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 
+//pricing cards CSS
+import 'antd/dist/antd.css'
+
 import PageHeader from '../components/PageHeader'
 import Content from '../components/Content.js'
 import Layout from '../components/Layout.js'
@@ -8,6 +11,9 @@ import Accordion from '../components/Accordion'
 import BackgroundVideo from '../components/BackgroundVideo'
 import Gallery from '../components/Gallery'
 import Popup from '../components/Popup'
+
+//Pricing Cards
+import PricingCards from '../components/Pricing'
 
 // Export Template for use in CMS preview
 export const ComponentsPageTemplate = ({
@@ -20,6 +26,8 @@ export const ComponentsPageTemplate = ({
   videoPoster,
   videoTitle,
   accordion,
+  basePricingData,
+  pricingData,
   body,
   gallery
 }) => (
@@ -57,6 +65,22 @@ export const ComponentsPageTemplate = ({
     <section className="section">
       <div className="container">
         <Accordion items={accordion} />
+      </div>
+    </section>
+
+    <section className="section">
+      <div className="container">
+      <PricingCards
+        data={basePricingData}
+      />
+      </div>
+    </section>
+
+    <section className="section">
+      <div className="container">
+      <PricingCards
+        data={pricingData}
+      />
       </div>
     </section>
 
@@ -100,6 +124,30 @@ export const pageQuery = graphql`
         accordion {
           title
           description
+        }
+        basePricingData {
+          name
+          description
+          price
+          priceLabel
+          type
+          buttonLabel
+          listItems {
+            content
+            tooltip
+          }
+        }
+        pricingData {
+          name
+          description
+          price
+          priceLabel
+          type
+          buttonLabel
+          listItems {
+            content
+            tooltip
+          }
         }
       }
     }
