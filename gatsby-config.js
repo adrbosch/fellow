@@ -1,5 +1,4 @@
 const postcssPresetEnv = require('postcss-preset-env')
-const languages = require('./content/data/languages')
 
 module.exports = {
   siteMetadata: {
@@ -93,16 +92,6 @@ module.exports = {
           },
           `gatsby-remark-responsive-iframe`
         ]
-      }
-    },
-
-    // Support for multi-language
-    {
-      resolve: 'gatsby-plugin-i18n',
-      options: {
-        langKeyForNull: 'any',
-        langKeyDefault: languages.defaultLangKey,
-        useLangKeyLayout: false,
       }
     },
 

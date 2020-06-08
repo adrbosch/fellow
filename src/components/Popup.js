@@ -1,7 +1,17 @@
 import React, { Component, Fragment } from 'react'
 import { X } from 'react-feather'
+import { Button, Typography } from 'antd';
 
 import './Popup.css'
+
+  //new button
+
+  const buttonProps = {
+    style: { marginBottom: 48 },
+    shape: 'round',
+    size: 'large',
+    type: 'primary',
+  };
 
 class Popup extends Component {
   constructor(props) {
@@ -21,9 +31,9 @@ class Popup extends Component {
       <Fragment>
         <div className="taCenter">
           <h3> Simple Popup Example</h3>
-          <div class="Button" onClick={this.togglePopup.bind(this)}>
+          <Button {...buttonProps} style={{ background: "var(--primary)", borderColor: "var(--primary)" }} onClick={this.togglePopup.bind(this)}>
             Click To Launch Popup
-          </div>
+          </Button>
         </div>
 
         {this.state.showPopup ? (

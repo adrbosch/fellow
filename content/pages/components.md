@@ -36,6 +36,38 @@ accordion:
     title: Taciti lorem
   - description: Taciti lorem tempor quam vestibulum dis habitasse
     title: Taciti lorem
+basePricingData:
+  - name: Starter
+    description: For recruiters that want to explore upgrading the client/candidate experience
+    price: $15/mo
+    priceLabel: Billed Monthly
+    type: purchase
+    buttonLabel: Start Now
+    listItems:
+    - content: no co-devs
+      tooltip: This is the number of customizations that you can request a month.
+    - content: Basic support
+pricingData:
+  - name: Iterate
+    description: For recruiters that want to explore upgrading the client/candidate experience
+    price: +$5/mo
+    priceLabel: Billed Monthly
+    type: purchase
+    buttonLabel: Upgrade
+    listItems:
+    - content: 2 co-devs
+      tooltip: This is the number of customizations that you can request a month.
+    - content: Basic support + customization support
+  - name: Grow Together
+    description: For those who appreciate incremental upgrades and want to add on top of existing functionalities
+    price: +$10/mo
+    priceLabel: Billed Monthly
+    type: purchase
+    buttonLabel: Upgrade
+    listItems:
+    - content: 5 co-devs
+      tooltip: This is the number of customizations that you can request a month.
+    - content: Premium support
 gallery:
   - alt: yellow rope image
     image: 'https://ucarecdn.com/277cdf82-24aa-4d80-8169-bb46f4cd319d/'
