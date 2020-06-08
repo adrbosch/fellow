@@ -1,7 +1,7 @@
 # See https://github.com/netlify/netlify-cms/blob/master/example/config.yml
 backend:
   name: git-gateway
-  branch: master # Branch to update (optional; defaults to master)
+  branch: test # Branch to update (optional; defaults to master)
 
 # display_url: https://gatsbro.netlify.com # This url will display in the top-right of the CMS
 media_library:
@@ -160,8 +160,8 @@ collections: # A list of collections the CMS should be able to edit
             name: 'accordion'
             widget: 'list'
             fields:
-              - { name: title, label: title, widget: string, default: '' }
-              - { name: description, label: description, widget: string }
+              - { name: title, label: Title, widget: string, default: '' }
+              - { name: description, label: Description, widget: string }
           - label: 'Base Pricing'
             name: 'basePricingData'
             widget: 'list'
@@ -172,6 +172,16 @@ collections: # A list of collections the CMS should be able to edit
               - { name: priceLabel, label: priceLabel, widget: string }
               - { name: type, label: type, widget: string}
               - { name: buttonLabel, label: buttonLabel, widget: string}
+          - label: 'On Top Pricing'
+            name: 'pricingData'
+            widget: 'list'
+            fields:
+              - { name: name, label: name, widget: string, default: '' }
+              - { name: description, label: description, widget: string }
+              - { name: price, label: price, widget: string }
+              - { name: priceLabel, label: priceLabel, widget: string }
+              - { name: type, label: type, widget: string}
+              - { name: buttonLabel, label: buttonLabel, widget: string}          
           - label: 'Gallery'
             name: 'gallery'
             widget: 'list'
