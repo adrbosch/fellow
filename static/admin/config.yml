@@ -34,13 +34,6 @@ collections: # A list of collections the CMS should be able to edit
             }
           - { label: Slug, name: slug, widget: hidden, default: 'contact' }
           - { label: Title, name: title, widget: string }
-          - { label: Id, name: id, widget: number }
-          - label: 'Language'
-            name: 'lang'
-            widget: 'relation'
-            collection: 'postLanguage'
-            searchFields: ['title']
-            valueField: 'title'
           - {
               label: Featured Image,
               name: featuredImage,
@@ -117,13 +110,6 @@ collections: # A list of collections the CMS should be able to edit
             }
           - { label: Slug, name: slug, widget: hidden, default: 'blog' }
           - { label: Title, name: title, widget: string }
-          - { label: Id, name: id, widget: number }
-          - label: 'Language'
-            name: 'lang'
-            widget: 'relation'
-            collection: 'postLanguage'
-            searchFields: ['title']
-            valueField: 'title'
           - { label: Featured Image, name: featuredImage, widget: image }
           - { label: Subtitle, name: subtitle, widget: markdown }
           - label: 'Meta'
@@ -176,6 +162,16 @@ collections: # A list of collections the CMS should be able to edit
             fields:
               - { name: title, label: title, widget: string, default: '' }
               - { name: description, label: description, widget: string }
+          - label: 'Base Pricing'
+            name: 'basePricingData'
+            widget: 'list'
+            fields:
+              - { name: name, label: name, widget: string, default: '' }
+              - { name: description, label: description, widget: string }
+              - { name: price, label: price, widget: string }
+              - { name: priceLabel, label: priceLabel, widget: string }
+              - { name: type, label: type, widget: string}
+              - { name: buttonLabel, label: buttonLabel, widget: string}
           - label: 'Gallery'
             name: 'gallery'
             widget: 'list'
@@ -220,13 +216,6 @@ collections: # A list of collections the CMS should be able to edit
             }
           - { label: Slug, name: slug, widget: hidden, default: '' }
           - { label: Title, name: title, widget: string }
-          - { label: Id, name: id, widget: number }
-          - label: 'Language'
-            name: 'lang'
-            widget: 'relation'
-            collection: 'postLanguage'
-            searchFields: ['title']
-            valueField: 'title'
           - { label: Featured Image, name: featuredImage, widget: image }
           - { label: Subtitle, name: subtitle, widget: markdown, required: false }
           - { label: Body, name: body, widget: markdown }
@@ -278,13 +267,6 @@ collections: # A list of collections the CMS should be able to edit
         }
       - { label: Slug, name: slug, widget: string }
       - { label: Title, name: title, widget: string }
-      - { label: Id, name: id, widget: number }
-      - label: 'Language'
-        name: 'lang'
-        widget: 'relation'
-        collection: 'postLanguage'
-        searchFields: ['title']
-        valueField: 'title'
       - { label: Featured Image, name: featuredImage, widget: image }
       - { label: Body, name: body, widget: markdown }
       - label: 'Meta'
@@ -317,13 +299,6 @@ collections: # A list of collections the CMS should be able to edit
     fields: # The fields each document in this collection have
       - { label: Template, name: template, widget: hidden, default: SinglePost }
       - { label: Title, name: title, widget: string }
-      - { label: Id, name: id, widget: number }
-      - label: 'Language'
-        name: 'lang'
-        widget: 'relation'
-        collection: 'postLanguage'
-        searchFields: ['title']
-        valueField: 'title'
       - label: 'Status'
         name: 'status'
         widget: 'select'
@@ -379,13 +354,6 @@ collections: # A list of collections the CMS should be able to edit
     fields: # The fields each document in this collection have
       - { label: Template, name: template, widget: hidden, default: BlogIndex }
       - { label: Title, name: title, widget: string }
-      - { label: Id, name: id, widget: number }
-      - label: 'Language'
-        name: 'lang'
-        widget: 'relation'
-        collection: 'postLanguage'
-        searchFields: ['title']
-        valueField: 'title'
       - { label: Subtitle, name: subtitle, widget: string, required: false }
       - {
           label: Featured Image,
@@ -412,18 +380,6 @@ collections: # A list of collections the CMS should be able to edit
               required: false,
             }
           - { label: Noindex, name: noindex, widget: boolean, required: false }
-
-  - name: postLanguage
-    label: Post Language
-    editor:
-      preview: false
-    folder: content/postLanguage
-    slug: '{{slug}}'
-    create: true # Allow users to create new documents in this collection
-    fields: # The fields each document in this collection have
-      - { label: Template, name: template, widget: hidden, default: BlogIndex }
-      - { label: Title, name: title, widget: string }
-      - { label: Subtitle, name: subtitle, widget: string, required: false }
 
   - name: 'settings'
     label: 'Settings'
@@ -454,17 +410,3 @@ collections: # A list of collections the CMS should be able to edit
               widget: string,
               required: false,
             }
-
-  - name: 'languages'
-    label: 'Languages'
-    extension: "json"
-    delete: false # Prevent users from deleting documents in this collection
-    editor:
-      preview: false
-    files:       
-      - file: 'content/data/articles.json'
-        label: 'Content Language'
-        name: 'contentLanguage'
-        fields:
-        - { label: home, name: home, widget: string}
-        - { label: articles, name: articles, widget: list}
