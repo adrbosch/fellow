@@ -172,6 +172,12 @@ collections: # A list of collections the CMS should be able to edit
               - { name: priceLabel, label: priceLabel, widget: string }
               - { name: type, label: type, widget: string}
               - { name: buttonLabel, label: buttonLabel, widget: string}
+              - label : 'List Items'
+                name: 'pricingData'
+                widget: 'list'
+                fields:
+                  - {name: content, label: Content, widget: string, default: '' }
+                  - {name: tooltip, label: Tooltip, widget: string }
           - label: 'On Top Pricing'
             name: 'pricingData'
             widget: 'list'
@@ -181,7 +187,13 @@ collections: # A list of collections the CMS should be able to edit
               - { name: price, label: price, widget: string }
               - { name: priceLabel, label: priceLabel, widget: string }
               - { name: type, label: type, widget: string}
-              - { name: buttonLabel, label: buttonLabel, widget: string}          
+              - { name: buttonLabel, label: buttonLabel, widget: string}
+              - label : 'List Items'
+                name: 'pricingData'
+                widget: 'list'
+                fields:
+                  - {name: content, label: Content, widget: string, default: '' }
+                  - {name: tooltip, label: Tooltip, widget: string }          
           - label: 'Gallery'
             name: 'gallery'
             widget: 'list'
