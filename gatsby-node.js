@@ -107,5 +107,15 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   }
 }
 
+// Taking forever to build, this might help.
+const ChildProcess = require('child_process');
+exports.onPostBuild = () => {
+  ChildProcess.execSync(
+    "ps aux | grep jest | grep -v grep | awk '{print $2}' | xargs kill",
+  );
+};
+
 // Random fix for https://github.com/gatsbyjs/gatsby/issues/5700
 module.exports.resolvableExtensions = () => ['.json']
+
+

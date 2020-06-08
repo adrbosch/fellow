@@ -47,7 +47,7 @@ Each site you'll create need its own Uploadcare API key's. See below how to set 
 - Once on the dashboard create a new project
 - Set the name and hit create
 - In the left menu click in API Keys and copy the public key
-- Now open your project and open the CMS congif.yml file
+- Now open your project and open the CMS config.yml file
 - find the `media_library` settings and paste in the public key after `publicKey:`
 - Done!!
 
