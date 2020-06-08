@@ -173,7 +173,7 @@ collections: # A list of collections the CMS should be able to edit
               - { name: type, label: type, widget: string}
               - { name: buttonLabel, label: buttonLabel, widget: string}
               - label : 'List Items'
-                name: 'pricingData'
+                name: 'listItems'
                 widget: 'list'
                 fields:
                   - {name: content, label: Content, widget: string, default: '' }
@@ -189,7 +189,7 @@ collections: # A list of collections the CMS should be able to edit
               - { name: type, label: type, widget: string}
               - { name: buttonLabel, label: buttonLabel, widget: string}
               - label : 'List Items'
-                name: 'pricingData'
+                name: 'listItems'
                 widget: 'list'
                 fields:
                   - {name: content, label: Content, widget: string, default: '' }
