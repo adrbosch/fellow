@@ -10,6 +10,8 @@ import { BlogIndexTemplate } from '../templates/BlogIndex'
 import { SinglePostTemplate } from '../templates/SinglePost'
 import uploadcare from 'netlify-cms-media-library-uploadcare'
 
+import { ProductIndexTemplate } from '../templates/ProductIndex'
+
 CMS.registerMediaLibrary(uploadcare)
 
 if (
@@ -40,4 +42,8 @@ CMS.registerPreviewTemplate('blog-page', ({ entry }) => (
 ))
 CMS.registerPreviewTemplate('posts', ({ entry }) => (
   <SinglePostTemplate {...entry.toJS().data} />
+))
+
+CMS.registerPreviewTemplate('product-page', ({ entry }) => (
+  <ProductIndexTemplate {...entry.toJS().data} />
 ))
