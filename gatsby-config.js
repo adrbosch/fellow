@@ -125,6 +125,15 @@ module.exports = {
         showSpinner: false
       }
     },
+    {
+      resolve: 'gatsby-plugin-snipcartv3',
+      options: {
+        //replace with own Snipcart API key
+        apiKey: 'YzJjNDRiYjQtM2RlMy00OThhLWJiY2EtNzdhNWYxNDViMzllNjM3MjgxMDYwNDA5NzAxODQz',
+        autopop: true,
+        dataCurrency: "cop",
+        }
+    },
     'gatsby-plugin-sitemap',
     {
       resolve: 'gatsby-plugin-netlify-cms',
