@@ -22,9 +22,9 @@ exports.handler = async function(event, context, callback) {
     // Create a payment method list
     let paymentMethodList = [{
         id: 'mercado_pago',
-        name: 'MercadoPago',
-        // iconUrl: '<payment_method_icon_url_optional>',
-        checkoutUrl: cartRequest
+        name: 'Mercado Pago',
+        iconUrl: 'https://www.flaticon.es/premium-icon/icons/svg/1078/1078454.svg',
+        checkoutUrl: 'https://google.com',
     }]
 
     // Return successful status code and available payment methods
