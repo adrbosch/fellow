@@ -1,3 +1,5 @@
+import fetch from "node-fetch";
+
 exports.handler = async function(event, context, callback) {   
     // Get request's body
     const request = JSON.parse(event.body)
@@ -19,7 +21,7 @@ exports.handler = async function(event, context, callback) {
         id: 'mercado_pago',
         name: 'MercadoPago',
         // iconUrl: '<payment_method_icon_url_optional>',
-        checkoutUrl: `${SITE_URL}/home`,
+        checkoutUrl: 'MercadoPago'
     }]
 
     // Return successful status code and available payment methods
