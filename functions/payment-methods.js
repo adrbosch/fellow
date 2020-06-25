@@ -1,4 +1,4 @@
-import fetch from "node-fetch";
+const fetch = require('node-fetch');
 
 exports.handler = async function(event, context, callback) {   
     // Get request's body
@@ -21,7 +21,7 @@ exports.handler = async function(event, context, callback) {
         id: 'mercado_pago',
         name: 'MercadoPago',
         // iconUrl: '<payment_method_icon_url_optional>',
-        checkoutUrl: 'MercadoPago'
+        checkoutUrl: '/home'
     }]
 
     // Return successful status code and available payment methods
