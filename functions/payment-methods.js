@@ -21,15 +21,18 @@ exports.handler = async function(event, context, callback) {
 
     // Create a payment method list
     let paymentMethodList = [{
-        id: 'mercado_pago',
-        name: 'Mercado Pago',
-        iconUrl: 'https://www.flaticon.es/premium-icon/icons/svg/1078/1078454.svg',
+        id: 'epayco',
+        name: 'ePayco',
+        iconUrl: 'https://docs.epayco.co/img/nuevo.png',
         checkoutUrl: 'https://google.com',
     }]
 
     // Return successful status code and available payment methods
     return {
         statusCode: 200,
+        headers: {
+            'Content-Type': 'application/json',
+          },
         body: JSON.stringify(paymentMethodList)
     };
 }
