@@ -1,7 +1,7 @@
 const fetch = require("node-fetch");
 
 exports.handler = async function(event, context, callback) {   
-    // Get request's body
+    // Get request's body -- https://deploy-preview-11--upbeat-jones-648b6c.netlify.app/.netlify/functions/payment-methods
 
     if (event.body) {
         let cartRequest = event.body
@@ -24,7 +24,7 @@ exports.handler = async function(event, context, callback) {
         id: 'mercado_pago',
         name: 'MercadoPago',
         // iconUrl: '<payment_method_icon_url_optional>',
-        checkoutUrl: response
+        checkoutUrl: cartRequest
     }]
 
     // Return successful status code and available payment methods
