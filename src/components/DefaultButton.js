@@ -27,7 +27,7 @@ import { ShoppingCart } from 'react-feather'
     render() {
       const { children } = this.props
       return (
-            <Button {...buttonProps} icon={<ShoppingCart />} onClick={this.togglePopup.bind(this)}>
+            <Button {...buttonProps} className="snipcart-add-item" data-item-id={children.slug} data-item-price={children.price} data-item-url={children.slug} data-item-name={children.title} icon={<ShoppingCart />} onClick={this.togglePopup.bind(this)}>
             </Button>
       )
     }

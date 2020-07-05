@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Location } from '@reach/router'
 import { Link } from 'gatsby'
-import { Menu, X } from 'react-feather'
+import { Menu, X, ShoppingCart } from 'react-feather'
 import Logo from './Logo'
 
 import './Nav.css'
@@ -51,6 +51,9 @@ export class Navigation extends Component {
           <div className="Nav--Links">
             <NavLink to="/">Home</NavLink>
             <NavLink to="/components/">Components</NavLink>
+            <NavLink to="/soluciones/">Soluciones</NavLink>
+            <NavLink to="/summas/">Summas</NavLink>
+            <NavLink to="/faq/">FAQ</NavLink>
             <div
               className={`Nav--Group ${
                 this.state.activeSubNav === 'posts' ? 'active' : ''
@@ -83,9 +86,12 @@ export class Navigation extends Component {
                 </div>
               </span>
             </div>
-            <NavLink to="/soluciones/">Soluciones</NavLink>
             <NavLink to="/default/">Default</NavLink>
             <NavLink to="/contact/">Contact</NavLink>
+            <div className="Nav--Container container">
+
+            </div>
+            <NavLink className="snipcart-checkout" to="#"><ShoppingCart/></NavLink>
           </div>
           <button
             className="Button-blank Nav--MenuButton"

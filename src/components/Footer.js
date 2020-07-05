@@ -1,6 +1,8 @@
 import React from 'react'
-import InstagramFeed from './InstagramFeed'
+// import InstagramFeed from './InstagramFeed'
 import './Footer.css'
+
+import SetLanguageCart from './SetLanguageCart'
 
 export default () => (
   <div>
@@ -13,9 +15,10 @@ export default () => (
     <footer className="footer">
       <div className="container taCenter">
         <span>
-          © Copyright {new Date().getFullYear()} All rights reserved. Crafted by{' '}
-          <a href="https://thriveweb.com.au/">Thrive</a>.
+          © Copyright {new Date().getFullYear()} Todos los derechos reservados. Creado con ❤️ por {' '}
+          <a href="https://thriveweb.com.au/">Placeholder y Thrive</a>.
         </span>
+      <SetLanguageCart></SetLanguageCart>
       </div>
     </footer>
   </div>
