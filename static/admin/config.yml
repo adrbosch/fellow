@@ -247,7 +247,7 @@ collections: # A list of collections the CMS should be able to edit
             required: false
             fields:
               - { label: 'Title', name: 'title', widget: 'string' }
-              - { label: Content, name: content, widget: text }
+              - { name: description, label: Description, widget: string }
           - label: 'Meta'
             required: false
             name: 'meta'
@@ -291,6 +291,13 @@ collections: # A list of collections the CMS should be able to edit
       - { label: Title, name: title, widget: string }
       - { label: Featured Image, name: featuredImage, widget: image }
       - { label: Body, name: body, widget: markdown }
+      - label: 'Accordion'
+        name: 'accordion'
+        widget: 'list'
+        required: false
+        fields:
+          - { label: 'Title', name: 'title', widget: 'string' }
+          - { name: description, label: Description, widget: string }
       - label: 'Meta'
         required: false
         name: 'meta'
@@ -344,6 +351,92 @@ collections: # A list of collections the CMS should be able to edit
             name: 'category'
             widget: 'relation'
             collection: 'postCategories'
+            searchFields: ['title']
+            valueField: 'title'
+      - label: 'Meta'
+        required: false
+        name: 'meta'
+        widget: 'object'
+        fields:
+          - { label: Title, name: title, widget: string, required: false }
+          - {
+              label: Description,
+              name: description,
+              widget: text,
+              required: false,
+            }
+          - {
+              label: Canonical Link,
+              name: canonicalLink,
+              widget: string,
+              required: false,
+            }
+          - { label: Noindex, name: noindex, widget: boolean, required: false }
+
+  - name: solutions
+    label: Solucion
+    editor:
+      preview: true
+    folder: content/soluciones
+    slug: '{{slug}}'
+    create: true # Allow users to create new documents in this collection
+    fields: # The fields each document in this collection have
+      - { label: Template, name: template, widget: hidden, default: SingleSolution }
+      - { label: Título, name: title, widget: string }
+      - { label: Slug, name: slug, widget: string }
+      - { label: Precio, name: price, widget: string }
+      - label: 'Base Pricing'
+        name: 'basePricingData'
+        widget: 'list'
+        fields:
+          - { name: description, label: description, widget: string }
+          - { name: priceLabel, label: priceLabel, widget: string }
+          - { name: type, label: type, widget: string}
+          - { name: buttonLabel, label: buttonLabel, widget: string, default: 'Comprar'}
+          - label : 'List Items'
+            name: 'listItems'
+            widget: 'list'
+            fields:
+            - {name: content, label: Content, widget: string, default: '' }
+            - {name: tooltip, label: Tooltip, widget: string }
+      - { label: ID, name: id, widget: string }
+      - label: 'Status'
+        name: 'status'
+        widget: 'select'
+        options: ['Published', 'Featured', 'Draft']
+        default: 'Draft'
+      - { label: Fecha, name: date, widget: date, format: 'YYYY-MM-DD' }
+      - {
+          label: Imagen Principal,
+          name: featuredImage,
+          widget: image,
+          required: false,
+        }
+      - label: 'Galería'
+        name: 'gallery'
+        widget: 'list'
+        fields:
+          - { name: alt, label: Alt, widget: string, default: '' }
+          - { name: title, label: Título, widget: string }
+          - { name: image, label: Imagen, widget: image }
+      - { label: Descripción, name: description, widget: text }
+      - { label: Content, name: body, widget: markdown }
+      - label: 'Accordion'
+        name: 'accordion'
+        widget: 'list'
+        required: false
+        fields:
+          - { label: 'Título', name: 'title', widget: 'string' }
+          - { name: description, label: Descripción, widget: string }
+      - label: 'Categories'
+        name: 'categories'
+        widget: 'list'
+        required: false
+        fields:
+          - label: 'Categoría'
+            name: 'category'
+            widget: 'relation'
+            collection: 'categoriasSoluciones'
             searchFields: ['title']
             valueField: 'title'
       - label: 'Meta'
