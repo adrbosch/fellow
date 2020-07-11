@@ -4,9 +4,9 @@ import { Link } from 'gatsby'
 import BlogSearch from './BlogSearch'
 import './PostCategoriesNav.css'
 
-const PostCategoriesNav = ({ categories, enableSearch }) => (
+const SolutionCategoriesNav = ({ categories, enableSearch }) => (
   <div className="PostCategoriesNav">
-    <Link className="NavLink" exact="true" to={`/blog/`}>
+    <Link className="NavLink" exact="true" to={`/soluciones/`}>
       Todo
     </Link>
     {categories.map((category, index) => (
@@ -24,4 +24,4 @@ const PostCategoriesNav = ({ categories, enableSearch }) => (
   </div>
 )
 
-export default PostCategoriesNav
+export default SolutionCategoriesNav

@@ -1,15 +1,15 @@
 import React from 'react'
 
-import PostCard from '../components/PostCard'
+import SolutionCard from './SolutionCard'
 import './PostSection.css'
 
-class PostSection extends React.Component {
+class SolutionSection extends React.Component {
   static defaultProps = {
-    posts: [],
+    solutions: [],
     title: '',
     limit: 12,
     showLoadMore: true,
-    loadMoreTitle: 'Mostrar más',
+    loadMoreTitle: 'Load More',
     perPageLimit: 12
   }
 
@@ -23,21 +23,21 @@ class PostSection extends React.Component {
     }))
 
   render() {
-    const { posts, title, showLoadMore, loadMoreTitle } = this.props,
+    const { solutions, title, showLoadMore, loadMoreTitle } = this.props,
       { limit } = this.state,
-      visiblePosts = posts.slice(0, limit || posts.length)
+      visibleSolutions = solutions.slice(0, limit || solutions.length)
 
     return (
       <div className="PostSection">
         {title && <h2 className="PostSection--Title">{title}</h2>}
-        {!!visiblePosts.length && (
+        {!!visibleSolutions.length && (
           <div className="PostSection--Grid">
-            {visiblePosts.map((post, index) => (
-              <PostCard key={post.title + index} {...post} />
+            {visibleSolutions.map((solution, index) => (
+              <SolutionCard key={solution.title + index} {...solution} />
             ))}
           </div>
         )}
-        {showLoadMore && visiblePosts.length < posts.length && (
+        {showLoadMore && visibleSolutions.length < solutions.length && (
           <div className="taCenter">
             <button className="button" onClick={this.increaseLimit}>
               {loadMoreTitle}
@@ -49,4 +49,4 @@ class PostSection extends React.Component {
   }
 }
 
-export default PostSection
+export default SolutionSection
