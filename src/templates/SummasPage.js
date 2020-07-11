@@ -4,18 +4,14 @@ import { graphql } from 'gatsby'
 import PageHeader from '../components/PageHeader'
 import Content from '../components/Content'
 import Layout from '../components/Layout'
+
 import Accordion from '../components/Accordion'
 
 // Export Template for use in CMS preview
-export const DefaultPageTemplate = ({
-  title,
-  subtitle,
-  featuredImage,
-  accordion,
-  body
-}) => (
-  <main className="DefaultPage">
+export const SummasTemplate = ({ title, subtitle, featuredImage, body }) => (
+  <main className="Home">
     <PageHeader
+      large
       title={title}
       subtitle={subtitle}
       backgroundImage={featuredImage}
@@ -26,27 +22,24 @@ export const DefaultPageTemplate = ({
         <Content source={body} />
       </div>
     </section>
-
-    <section className="section">
-      <div className="container">
-        <Accordion items={accordion} />
-      </div>
-    </section>
   </main>
 )
 
-const DefaultPage = ({ data: { page } }) => (
-  <Layout
-    meta={page.frontmatter.meta || false}
-    title={page.frontmatter.title || false}
-  >
-    <DefaultPageTemplate {...page.frontmatter} body={page.html} />
+// Export Default HomePage for front-end
+const SummasPage = ({ data: { page } }) => (
+  <Layout meta={page.frontmatter.meta || false}>
+    <SummasTemplate {...page} {...page.frontmatter} body={page.html} />
   </Layout>
 )
-export default DefaultPage
+
+export default SummasPage
 
 export const pageQuery = graphql`
-  query DefaultPage($id: String!) {
+  ## Query for HomePage data
+  ## Use GraphiQL interface (http://localhost:8000/___graphql)
+  ## $id is processed via gatsby-node.js
+  ## query name must be unique to this file
+  query Summas($id: String!) {
     page: markdownRemark(id: { eq: $id }) {
       ...Meta
       html
