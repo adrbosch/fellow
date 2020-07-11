@@ -1,17 +1,15 @@
 ---
-template: HomePage
-slug: ''
-title: Tecnología que te empodera
-featuredImage: 'https://ucarecdn.com/159203d3-881d-4218-baa1-ca4427b48d0d/'
-subtitle: 'Nuestra tecnología te acompaña para transformar esas cosas complejas, en algo fácil, eficiente y, si quieres, colaborativo.'
+template: SummasPage
+slug: 'summas'
+title: Cualquier solución, a la medida
+featuredImage: 'https://ucarecdn.com/7ec2ff8c-5ef7-4dd8-b551-baa44d114cc3/'
+subtitle: 'Si crees que agrega valor para tí, hagámoslo realidad'
 meta:
   description: This is a meta description.
   title: Soluciones para la vida
 ---
 
-# Bienvenido
-
-<!-- Yellowcake is an opinionated starter project created by [Thrive Digital](https://thriveweb.com.au/) a [Gold Coast Web Design](https://thriveweb.com.au/) studio. to help you create lightening fast websites with [Gatsby](https://gatsbyjs.org) and [Netlify CMS](https://netlifycms.org). -->
+Diseño modular que nos da flexibilidad y eficiencia.
 
 <!-- View the [project overview](https://thriveweb.com.au/the-lab/yellowcake-gatsby-react-js-starter-project/) and the [docs](https://github.com/thriveweb/yellowcake/blob/master/README.md).
 
