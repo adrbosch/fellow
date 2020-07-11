@@ -57,6 +57,7 @@
   "main": "n/a",
   "scripts": {
     "start": "npm run clean && npm run develop",
+    "noIndex": "gatsby build && echo 'User-agent: *\nDisallow: /' > dist/robots.txt",
     "build": "gatsby build",
     "develop": "gatsby develop",
     "clean": "del-cli .cache public",
