@@ -2,8 +2,7 @@ const coda = require('coda-js')
 
 const coda = new Coda(process.env.CODA_AUTH);
 
-// trick for using async in a script
-(async () => {
+exports.handler = async function(event, context, callback) { 
     const whoAmI = await coda.whoAmI();
     console.log(whoAmI);
-  })().catch((error) => console.log(error));
+}
