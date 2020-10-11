@@ -6,5 +6,8 @@ const codajs = new Coda(process.env.GATSBY_CODA_AUTH);
 
 exports.handler = async function(event, context, callback) { 
     const whoAmI = await codajs.whoAmI();
-    console.log(whoAmI);
+    return {
+        statusCode: 200,
+        body: whoAmI,
+      };
 }
