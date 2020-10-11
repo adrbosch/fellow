@@ -14,15 +14,15 @@ exports.handler = async (event, context) => {
     const params = querystring.parse(event.body);
     const orderCompleted = params.eventName || "nope";
 
-    if (orderCompleted === "order.completed") {
+    if (orderCompleted == "order.completed") {
         const userInfo = params.content.user;
         const itemInfo = params.content.items;
 
-        const itemName = item.name;
-        const itemQuantity = item.quantity;
-        const itemPrice = item.price;
-        const transactionUID = item.uniqueId;
-        const transactionUser = item.email;
+        const itemName = itemInfo.name;
+        const itemQuantity = itemInfo.quantity;
+        const itemPrice = itemInfo.price;
+        const transactionUID = itemInfo.uniqueId;
+        const transactionUser = userInfo.email;
         //Get the table info
         const table = docs.getTable(process.env.GATSBY_CODA_TABLE);
 
@@ -41,10 +41,11 @@ exports.handler = async (event, context) => {
             statusCode: 200,
             body: "order completed"
         }
-    }
+    } else {
   
-    return {
-      statusCode: 200,
-      body: "order NOT completed"
-    };
+        return {
+        statusCode: 200,
+        body: "order NOT completed"
+        };
+    }
   };
