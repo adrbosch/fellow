@@ -8,6 +8,8 @@ exports.handler = async function(event, context, callback) {
     const whoAmI = await codajs.whoAmI();
     return {
         statusCode: 200,
-        body: whoAmI,
+        body: JSON.stringify({
+          result: whoAmI
+        })
       };
 }
