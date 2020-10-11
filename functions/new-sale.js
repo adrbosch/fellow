@@ -1,4 +1,5 @@
 const { Coda } = require('coda-js');
+const querystring = require('querystring');
 
 const codajs = new Coda(process.env.GATSBY_CODA_AUTH);
 
