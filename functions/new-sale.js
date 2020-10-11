@@ -45,7 +45,7 @@ exports.handler = async (event, context) => {
   
         return {
         statusCode: 200,
-        body: "order NOT completed"
+        body: JSON.stringify(params)
         };
     }
   };
