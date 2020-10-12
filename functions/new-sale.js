@@ -25,7 +25,7 @@ exports.handler = async (event, context) => {
         const transactionUID = itemInfo.uniqueId;
         const transactionUser = userInfo.email;
         //Get the table info
-        const table = docs.getTable(process.env.GATSBY_CODA_TABLE);
+        const table = codajs.getTable(process.env.GATSBY_CODA_TABLE);
 
         await table.insertRows([
             [
