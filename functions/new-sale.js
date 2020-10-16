@@ -25,27 +25,22 @@ exports.handler = async (event, context) => {
         const transactionUID = itemInfo.uniqueId;
         const transactionUser = userInfo.email;
         //Get the table info
-        const doc = await codajs.getDoc(process.env.GATSBY_CODA_DOC);
-
-        // const table = await doc.getTable('grid-_14oaR8gdM');
+        const table = await codajs.getTable(process.env.GASTBY_CODA_DOC, process.env.GATSBY_CODA_TABLE);
         
-        // const table = await codajs.getTable(process.env.GATSBY_CODA_DOC, process.env.GATSBY_CODA_TABLE);
-
-        // await codajs.insertRows([
-        //     [
-        //       { column: process.env.GATSBY_CODA_NOMBRE, value: itemName },
-        //       { column: process.env.GATSBY_CODA_CANTIDAD, value: itemQuantity },
-        //       { column: process.env.GATSBY_CODA_PRECIO, value: itemPrice },
-        //       { column: process.env.GATSBY_CODA_UID, value: transactionUID },
-        //       { column: process.env.GATSBY_CODA_USER, value: transactionUser },
-        //       { column: 'Completed', value: true }
-        //     ]
-        // ]);
+        await table.insertRows([
+            [
+              { column: process.env.GATSBY_CODA_NOMBRE, value: itemName },
+              { column: process.env.GATSBY_CODA_CANTIDAD, value: itemQuantity },
+              { column: process.env.GATSBY_CODA_PRECIO, value: itemPrice },
+              { column: process.env.GATSBY_CODA_UID, value: transactionUID },
+              { column: process.env.GATSBY_CODA_USER, value: transactionUser },
+            ]
+        ]);
 
         return {
             statusCode: 200,
             body: JSON.stringify({
-              result: doc
+              result: 'Completed'
             })
         }
     } else {
