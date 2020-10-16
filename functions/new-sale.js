@@ -42,15 +42,18 @@ exports.handler = async (event, context) => {
         try {
           await table.insertRows([
             [
-              { column: nameColumn, value: itemName },
-              { column: quantityColumn, value: itemQuantity },
+              { column: nameColumn, value: 'test' },
+              { column: process.env.GATSBY_CODA_CANTIDAD, value: 'test2' },
               // { column: priceColumn, value: itemPrice },
               // { column: UIDColumn, value: transactionUID },
               // { column: userColumn, value: transactionUser },
             ],
           ]);
         } catch (error) {
-          console.log(error)
+          return {
+            statusCode: 400,
+            body: error
+          }
         }
 
         return {
