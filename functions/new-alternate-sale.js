@@ -26,8 +26,7 @@ exports.handler = async (event, context) => {
         const transactionUser = userInfo.email;
         //Get the table info
         const doc = await coda.getDoc(process.env.GATSBY_CODA_DOC);
-
-        // const table = await doc.getTable('grid-_14oaR8gdM');
+        const table = await doc.getTable(process.env.GATSBY_CODA_TABLE);
         
         // const table = await codajs.getTable(process.env.GATSBY_CODA_DOC, process.env.GATSBY_CODA_TABLE);
 
@@ -45,7 +44,7 @@ exports.handler = async (event, context) => {
         return {
             statusCode: 200,
             body: JSON.stringify({
-              result: doc
+              result: table
             })
         }
     } else {
