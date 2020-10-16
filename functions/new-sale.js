@@ -40,14 +40,13 @@ exports.handler = async (event, context) => {
         const table = await codajs.getTable(process.env.GASTBY_CODA_DOC, process.env.GATSBY_CODA_TABLE);
         //Insert the data
         await table.insertRows([
-          {
-            nameColumn: itemName,
-            quantityColumn: itemQuantity,
-            priceColumn: itemPrice,
-            UIDColumn: transactionUID,
-            userColumn: transactionUser,
-            Completed: true,
-          },
+          [
+            { column: nameColumn, value: itemName },
+            { column: quantityColumn, value: itemQuantity },
+            { column: priceColumn, value: itemPrice },
+            { column: UIDColumn, value: transactionUID },
+            { column: userColumn, value: transactionUser },
+          ],
         ]);
 
         return {
