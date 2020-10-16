@@ -24,19 +24,25 @@ exports.handler = async (event, context) => {
         const itemPrice = itemInfo.price;
         const transactionUID = itemInfo.uniqueId;
         const transactionUser = userInfo.email;
+
+        //construct the body
+        var body = {
+          'rows': [
+            {
+              'cells': [
+                {'column': process.env.GATSBY_CODA_NOMBRE, 'value': itemName},
+                {'column': process.env.GATSBY_CODA_CANTIDAD, 'value': itemQuantity},
+                {'column': process.env.GATSBY_CODA_PRECIO, 'value': itemPrice},
+                {'column': process.env.GATSBY_CODA_UID, 'value': transactionUID},
+                {'column': process.env.GATSBY_CODA_USER, 'value': transactionUser},
+              ],
+            },
+          ],
+        };
         //Get the table info
-        const table = await codajs.getTable(process.env.GASTBY_CODA_DOC, process.env.GATSBY_CODA_TABLE);
-        
-        await table.insertRows([
-            [
-              { column: process.env.GATSBY_CODA_NOMBRE, value: itemName },
-              { column: process.env.GATSBY_CODA_CANTIDAD, value: itemQuantity },
-              { column: process.env.GATSBY_CODA_PRECIO, value: itemPrice },
-              { column: process.env.GATSBY_CODA_UID, value: transactionUID },
-              { column: process.env.GATSBY_CODA_USER, value: transactionUser },
-              { column: 'Completed', value: true },
-            ],
-        ]);
+        //const table = await codajs.getTable(process.env.GASTBY_CODA_DOC, process.env.GATSBY_CODA_TABLE);
+        //Insert the data
+        await codajs.upsertRows(process.env.GASTBY_CODA_DOC, process.env.GATSBY_CODA_TABLE, body);
 
         return {
             statusCode: 200,
