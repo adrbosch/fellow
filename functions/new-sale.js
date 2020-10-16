@@ -39,15 +39,19 @@ exports.handler = async (event, context) => {
         //Get the table info
         const table = await codajs.getTable(process.env.GASTBY_CODA_DOC, process.env.GATSBY_CODA_TABLE);
         //Insert the data
-        await table.insertRows([
-          [
-            { column: nameColumn, value: itemName },
-            { column: quantityColumn, value: itemQuantity },
-            { column: priceColumn, value: itemPrice },
-            { column: UIDColumn, value: transactionUID },
-            { column: userColumn, value: transactionUser },
-          ],
-        ]);
+        try {
+          await table.insertRows([
+            [
+              { column: nameColumn, value: itemName },
+              { column: quantityColumn, value: itemQuantity },
+              // { column: priceColumn, value: itemPrice },
+              // { column: UIDColumn, value: transactionUID },
+              // { column: userColumn, value: transactionUser },
+            ],
+          ]);
+        } catch (error) {
+          console.log(error)
+        }
 
         return {
             statusCode: 200,
