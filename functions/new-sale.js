@@ -34,13 +34,14 @@ exports.handler = async (event, context) => {
               { column: process.env.GATSBY_CODA_PRECIO, value: itemPrice },
               { column: process.env.GATSBY_CODA_UID, value: transactionUID },
               { column: process.env.GATSBY_CODA_USER, value: transactionUser },
-            ]
+              { column: 'Completed', value: true },
+            ],
         ]);
 
         return {
             statusCode: 200,
             body: JSON.stringify({
-              result: 'Completed'
+              result: "Completed"
             })
         }
     } else {
