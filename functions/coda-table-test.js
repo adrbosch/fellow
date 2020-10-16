@@ -5,7 +5,7 @@ const coda = require('coda-js')
 const codajs = new Coda(process.env.GATSBY_CODA_AUTH);
 
 exports.handler = async function(event, context, callback) {
-    const docs = await codajs.getDoc(process.env.GATSBY_CODA_DOC);
+    const docs = await codajs.listDocs();
     const table = docs.getTable(process.env.GATSBY_CODA_TABLE);
     return {
         statusCode: 200,
