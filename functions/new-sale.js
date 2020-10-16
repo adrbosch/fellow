@@ -1,5 +1,5 @@
 const { Coda } = require('coda-js');
-const querystring = require('querystring');
+// const querystring = require('querystring');
 
 const codajs = new Coda(process.env.GATSBY_CODA_AUTH);
 
@@ -25,30 +25,34 @@ exports.handler = async (event, context) => {
         const transactionUID = itemInfo.uniqueId;
         const transactionUser = userInfo.email;
         //Get the table info
-        const doc = await codajs.getDoc(process.env.GATSBY_CODA_DOC);
-        const table = await doc.getTable(process.env.GATSBY_CODA_TABLE);
-        //const table = await codajs.getTable(process.env.GATSBY_CODA_DOC, process.env.GATSBY_CODA_TABLE);
+        
+        const table = await codajs.getTable(process.env.GATSBY_CODA_DOC, process.env.GATSBY_CODA_TABLE);
 
-        await table.insertRows([
-            [
-              { column: process.env.GATSBY_CODA_NOMBRE, value: itemName },
-              { column: process.env.GATSBY_CODA_CANTIDAD, value: itemQuantity },
-              { column: process.env.GATSBY_CODA_PRECIO, value: itemPrice },
-              { column: process.env.GATSBY_CODA_UID, value: transactionUID },
-              { column: process.env.GATSBY_CODA_USER, value: transactionUser },
-              { column: 'Completed', value: true }
-            ]
-        ]);
+        console.log(itemPrice);
+
+        // await codajs.insertRows([
+        //     [
+        //       { column: process.env.GATSBY_CODA_NOMBRE, value: itemName },
+        //       { column: process.env.GATSBY_CODA_CANTIDAD, value: itemQuantity },
+        //       { column: process.env.GATSBY_CODA_PRECIO, value: itemPrice },
+        //       { column: process.env.GATSBY_CODA_UID, value: transactionUID },
+        //       { column: process.env.GATSBY_CODA_USER, value: transactionUser },
+        //       { column: 'Completed', value: true }
+        //     ]
+        // ]);
 
         return {
             statusCode: 200,
-            body: "order completed"
+            body: JSON.stringify({
+              result: table
+            })
         }
     } else {
   
         return {
         statusCode: 200,
-        body: JSON.stringify(orderCompleted)
+        body: "not an order"
+        // body: JSON.stringify(orderCompleted)
         };
     }
   };
