@@ -30,38 +30,26 @@ exports.handler = async (event, context) => {
         const transactionUID = itemInfo.uniqueId;
         const transactionUser = userInfo.email;
 
-                // {'column': process.env.GATSBY_CODA_NOMBRE, 'value': itemName},
-                // {'column': process.env.GATSBY_CODA_CANTIDAD, 'value': itemQuantity},
-                // {'column': process.env.GATSBY_CODA_PRECIO, 'value': itemPrice},
-                // {'column': process.env.GATSBY_CODA_UID, 'value': transactionUID},
-                // {'column': process.env.GATSBY_CODA_USER, 'value': transactionUser},
-
-        //Get the table info
         const table = await codajs.getTable(process.env.GASTBY_CODA_DOC, process.env.GATSBY_CODA_TABLE);
-        //Insert the data
-        try {
-          await table.insertRows([
-            [
-              { column: nameColumn, value: 'test' },
-              { column: process.env.GATSBY_CODA_CANTIDAD, value: 'test2' },
-              // { column: priceColumn, value: itemPrice },
-              // { column: UIDColumn, value: transactionUID },
-              // { column: userColumn, value: transactionUser },
-            ],
-          ]);
-        } catch (error) {
-          return {
-            statusCode: 400,
-            body: error
-          }
-        }
 
-        return {
+        return table.insertRows([
+          [
+            { column: nameColumn, value: 'test' },
+            { column: quantityColumn, value: 23 },
+            { column: priceColumn, value: 245 },
+            { column: UIDColumn, value: 'test' },
+            { column: userColumn, value: 'test@test.com' },
+          ],
+        ])
+          .then(() => ({
             statusCode: 200,
-            body: JSON.stringify({
-              result: "Completed"
-            })
-        }
+            body: `Hello, ${transactionUser}! Your info has been sent 👋`
+          }))
+          .catch(error => ({
+            statusCode: 422,
+            body: `Oops! Something went wrong. ${error}`
+          }));
+      
     } else {
   
         return {
