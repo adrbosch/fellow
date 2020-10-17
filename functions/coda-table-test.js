@@ -22,8 +22,7 @@ exports.handler = async (event, context) => {
 
     if (orderCompleted == "order.completed") {
         const userInfo = params.content.user;
-        const itemTest = params.content.items;
-        const itemInfo = itemTest[0];
+        const itemInfo = params.content.items;
 
         const itemName = itemInfo.name;
         const itemQuantity = itemInfo.quantity;
@@ -32,20 +31,21 @@ exports.handler = async (event, context) => {
         const transactionUser = userInfo.email;
 
         // const table = await codajs.getTable(process.env.GASTBY_CODA_DOC, process.env.GATSBY_CODA_TABLE);
-
+        for (var i = 0; i < itemInfo.length; i++) {
         const orderBody = {
           ColumnNameID: nameColumn,
           ColumnQuantityID: quantityColumn,
           ColumnPriceID: priceColumn,
           ColumnUID: UIDColumn,
           ColumnUser: userColumn,
-          test: itemName,
-          test2: itemQuantity,
+          test: itemInfo[i].name,
+          test2: itemInfo[i].quantity,
           test3: transactionUID,
           test4: transactionUser,
-          test5: itemPrice,
-          test6: itemTest.length,
+          test5: itemInfo[i].price,
+          test6: itemInfo.length,
         };
+      }
 
         return {
           statusCode: 200,

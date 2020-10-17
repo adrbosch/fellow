@@ -43,9 +43,9 @@ exports.handler = async (event, context) => {
             [
               { column: nameColumn, value: 'test' },
               { column: userColumn, value: 'test' },
-              { column: priceColumn, value: itemInfo.length },
+              { column: priceColumn, value: 1 },
               { column: UIDColumn, value: 'testUID' },
-              { column: quantityColumn, value: '1' },
+              { column: quantityColumn, value: 1 },
               { column: imputableColumn, value: 'true' },
               { column: facturaColumn, value: 'testinvoice' },
               { column: idPagoColumn, value: 'testpayment' },
