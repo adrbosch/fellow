@@ -41,16 +41,16 @@ exports.handler = async (event, context) => {
 
         await table.insertRows([
             [
-              { column: nameColumn, value: 'test' },
-              { column: userColumn, value: 'test' },
-              { column: priceColumn, value: 1 },
-              { column: UIDColumn, value: 'testUID' },
-              { column: quantityColumn, value: 1 },
-              { column: imputableColumn, value: 'true' },
-              { column: facturaColumn, value: 'testinvoice' },
-              { column: idPagoColumn, value: 'testpayment' },
-              { column: agenteColumn, value: 'testuseragent' },
-              { column: ipColumn, value: 'testip' },
+              { column: 'Nombre', value: 'test' },
+              { column: 'Usuario', value: 'test' },
+              { column: 'Precio', value: 1 },
+              { column: 'UID', value: 'testUID' },
+              { column: 'Cantidad', value: 1 },
+              { column: 'Imputable', value: 'true' },
+              { column: 'Factura', value: 'testinvoice' },
+              { column: 'IDPago', value: 'testpayment' },
+              { column: 'Agente', value: 'testuseragent' },
+              { column: 'IPAddress', value: 'testip' },
             ],
         ]);  
 

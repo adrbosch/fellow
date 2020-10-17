@@ -32,7 +32,7 @@ exports.handler = async (event, context) => {
 
         // const table = await codajs.getTable(process.env.GASTBY_CODA_DOC, process.env.GATSBY_CODA_TABLE);
         for (var i = 0; i < itemInfo.length; i++) {
-        const orderBody = {
+        var orderBody = {
           ColumnNameID: nameColumn,
           ColumnQuantityID: quantityColumn,
           ColumnPriceID: priceColumn,
