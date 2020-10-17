@@ -44,10 +44,10 @@ exports.handler = async (event, context) => {
         await table.insertRows([
           [
             { column: nameColumn, value: itemInfo[i].name },
-            { column: userColumn, value: transactionUser },
-            { column: priceColumn, value: itemInfo[i].totalPriceWithoutTaxes },
-            { column: UIDColumn, value: itemInfo[i].uniqueId },
-            { column: quantityColumn, value: itemInfo[i].quantity },
+            // { column: userColumn, value: transactionUser },
+            // { column: priceColumn, value: itemInfo[i].totalPriceWithoutTaxes },
+            // { column: UIDColumn, value: itemInfo[i].uniqueId },
+            // { column: quantityColumn, value: itemInfo[i].quantity },
             // { column: imputableColumn, value: itemInfo[i].taxable },
             // { column: facturaColumn, value: invoiceNumber },
             // { column: idPagoColumn, value: paymentTransactionId },
