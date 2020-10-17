@@ -22,7 +22,7 @@ exports.handler = async (event, context) => {
 
     if (orderCompleted == "order.completed") {
         const userInfo = params.content.user;
-        const itemInfo = params.content.items;
+        const itemInfo = params.content.items[0];
 
         const itemName = itemInfo.name;
         const itemQuantity = itemInfo.quantity;

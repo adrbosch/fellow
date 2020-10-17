@@ -19,42 +19,47 @@ exports.handler = async (event, context) => {
     const priceColumn = process.env.GATSBY_CODA_PRECIO;
     const UIDColumn = process.env.GATSBY_CODA_UID;
     const userColumn = process.env.GATSBY_CODA_USER;
+    const imputableColumn = process.env.GASTBY_CODA_IMPUTABLE;
+    const facturaColumn = process.env.GATSBY_CODA_FACTURA;
+    const idPagoColumn = process.env.GATSBY_CODA_IDPAGO;
+    const agenteColumn = process.env.GATSBY_CODA_AGENT;
+    const ipColumn = process.env.GATSBY_CODA_IP;
 
     if (orderCompleted == "order.completed") {
         const userInfo = params.content.user;
         const itemInfo = params.content.items;
+        const invoiceNumber = params.content.invoiceNumber;
+        const paymentTransactionId = params.content.paymentTransactionId;
+        const ipAddress = params.content.ipAddress;
+        const userAgent = params.content.userAgent;
 
-        const itemName = itemInfo.name;
-        const itemQuantity = itemInfo.quantity;
-        const itemPrice = itemInfo.price;
-        const transactionUID = itemInfo.uniqueId;
         const transactionUser = userInfo.email;
 
         const table = await codajs.getTable(process.env.GASTBY_CODA_DOC, process.env.GATSBY_CODA_TABLE);
 
+        for (var i = 0; i < itemInfo.length; i++) {
+
         await table.insertRows([
           [
-            { column: 'Nombre', value: 'test' },
-            { column: 'User', value: 'test@test.com' },
-            { column: 'Precio', value: 245 },
-            { column: 'UID', value: 'test' },
-            { column: 'Cantidad', value: 23 },
+            { column: nameColumn, value: itemInfo[i].name },
+            { column: userColumn, value: transactionUser },
+            { column: priceColumn, value: itemInfo[i].totalPriceWithoutTaxes },
+            { column: UIDColumn, value: itemInfo[i].uniqueId },
+            { column: quantityColumn, value: itemInfo[i].quantity },
+            { column: imputableColumn, value: itemInfo[i].taxable },
+            { column: facturaColumn, value: invoiceNumber },
+            { column: idPagoColumn, value: paymentTransactionId },
+            { column: agenteColumn, value: userAgent },
+            { column: ipColumn, value: ipAddress },
           ],
         ]);
+        }
 
         return {
         statusCode: 200,
         body: `Hello, ${transactionUser}! Your info has been sent 👋`
         // body: JSON.stringify(orderCompleted)
         };
-          // .then(() => ({
-          //   statusCode: 200,
-          //   body: `Hello, ${transactionUser}! Your info has been sent 👋`
-          // }))
-          // .catch(error => ({
-          //   statusCode: 422,
-          //   body: `Oops! Something went wrong. ${error}`
-          // }));
       
     } else {
   
