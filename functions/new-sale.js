@@ -34,10 +34,10 @@ exports.handler = async (event, context) => {
 
         await table.insertRows([
           [
-            { column: nameColumn, value: 'test' },
-            { column: userColumn, value: 'test@test.com' },
-            { column: priceColumn, value: 245 },
-            { column: UIDColumn, value: 'test' },
+            { column: 'Nombre', value: 'test' },
+            { column: 'User', value: 'test@test.com' },
+            { column: 'Precio', value: 245 },
+            { column: 'UID', value: 'test' },
             { column: 'Cantidad', value: 23 },
           ],
         ]);

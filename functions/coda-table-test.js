@@ -30,7 +30,7 @@ exports.handler = async (event, context) => {
         const transactionUID = itemInfo.uniqueId;
         const transactionUser = userInfo.email;
 
-        const table = await codajs.getTable(process.env.GASTBY_CODA_DOC, process.env.GATSBY_CODA_TABLE);
+        // const table = await codajs.getTable(process.env.GASTBY_CODA_DOC, process.env.GATSBY_CODA_TABLE);
 
         const orderBody = {
           ColumnNameID: nameColumn,
@@ -38,9 +38,11 @@ exports.handler = async (event, context) => {
           ColumnPriceID: priceColumn,
           ColumnUID: UIDColumn,
           ColumnUser: userColumn,
-          text: JSON.stringify(itemInfo, null, 2),
-          text2: JSON.stringify(userInfo, null,2),
-          test: itemPrice
+          test: itemName,
+          test2: itemQuantity,
+          test3: transactionUID,
+          test4: transactionUser,
+          test5: itemPrice
         };
 
         return {
