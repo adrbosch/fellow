@@ -32,7 +32,7 @@ exports.handler = async (event, context) => {
 
         const table = await codajs.getTable(process.env.GASTBY_CODA_DOC, process.env.GATSBY_CODA_TABLE);
 
-        return await table.insertRows([
+        await table.insertRows([
           [
             { column: nameColumn, value: 'test' },
             { column: userColumn, value: 'test@test.com' },
@@ -40,15 +40,21 @@ exports.handler = async (event, context) => {
             { column: UIDColumn, value: 'test' },
             { column: 'Cantidad', value: 23 },
           ],
-        ])
-          .then(() => ({
-            statusCode: 200,
-            body: `Hello, ${transactionUser}! Your info has been sent 👋`
-          }))
-          .catch(error => ({
-            statusCode: 422,
-            body: `Oops! Something went wrong. ${error}`
-          }));
+        ]);
+
+        return {
+        statusCode: 200,
+        body: `Hello, ${transactionUser}! Your info has been sent 👋`
+        // body: JSON.stringify(orderCompleted)
+        };
+          // .then(() => ({
+          //   statusCode: 200,
+          //   body: `Hello, ${transactionUser}! Your info has been sent 👋`
+          // }))
+          // .catch(error => ({
+          //   statusCode: 422,
+          //   body: `Oops! Something went wrong. ${error}`
+          // }));
       
     } else {
   
