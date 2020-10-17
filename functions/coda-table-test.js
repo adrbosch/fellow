@@ -22,7 +22,8 @@ exports.handler = async (event, context) => {
 
     if (orderCompleted == "order.completed") {
         const userInfo = params.content.user;
-        const itemInfo = params.content.items[0];
+        const itemTest = params.content.items;
+        const itemInfo = itemTest[0];
 
         const itemName = itemInfo.name;
         const itemQuantity = itemInfo.quantity;
@@ -42,7 +43,8 @@ exports.handler = async (event, context) => {
           test2: itemQuantity,
           test3: transactionUID,
           test4: transactionUser,
-          test5: itemPrice
+          test5: itemPrice,
+          test6: itemTest.length,
         };
 
         return {
