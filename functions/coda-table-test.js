@@ -29,6 +29,10 @@ exports.handler = async (event, context) => {
         const itemPrice = itemInfo.price;
         const transactionUID = itemInfo.uniqueId;
         const transactionUser = userInfo.email;
+        const invoiceNumber = params.content.invoiceNumber;
+        const paymentTransactionId = params.content.paymentTransactionId;
+        const ipAddress = params.content.ipAddress;
+        const userAgent = params.content.userAgent;
 
         // const table = await codajs.getTable(process.env.GASTBY_CODA_DOC, process.env.GATSBY_CODA_TABLE);
         for (var i = 0; i < itemInfo.length; i++) {
@@ -39,11 +43,11 @@ exports.handler = async (event, context) => {
           ColumnUID: UIDColumn,
           ColumnUser: userColumn,
           test: itemInfo[i].name,
-          test2: itemInfo[i].quantity,
-          test3: transactionUID,
+          test2: invoiceNumber,
+          test3: paymentTransactionId,
           test4: transactionUser,
-          test5: itemInfo[i].price,
-          test6: itemInfo.length,
+          test5: ipAddress,
+          test6: userAgent,
         };
       }
 

@@ -37,37 +37,24 @@ exports.handler = async (event, context) => {
 
         const table = await codajs.getTable(process.env.GASTBY_CODA_DOC, process.env.GATSBY_CODA_TABLE);
 
-        // for (var i = 0; i < itemInfo.length; i++) {}
+        for (var i = 0; i < itemInfo.length; i++) {
 
         await table.insertRows([
-            [
-              { column: 'Nombre', value: 'test' },
-              { column: 'Usuario', value: 'test' },
-              { column: 'Precio', value: 1 },
-              { column: 'UID', value: 'testUID' },
-              { column: 'Cantidad', value: 1 },
-              { column: 'Imputable', value: 'true' },
-              { column: 'Factura', value: 'testinvoice' },
-              { column: 'IDPago', value: 'testpayment' },
-              { column: 'Agente', value: 'testuseragent' },
-              { column: 'IPAddress', value: 'testip' },
-            ],
-        ]);  
+          [
+            { column: nameColumn, value: itemInfo[i].name },
+            { column: userColumn, value: transactionUser },
+            { column: priceColumn, value: itemInfo[i].totalPriceWithoutTaxes },
+            { column: UIDColumn, value: itemInfo[i].uniqueId },
+            { column: quantityColumn, value: itemInfo[i].quantity },
+            { column: imputableColumn, value: itemInfo[i].taxable },
+            // { column: facturaColumn, value: invoiceNumber },
+            // { column: idPagoColumn, value: paymentTransactionId },
+            // { column: agenteColumn, value: userAgent },
+            // { column: ipColumn, value: ipAddress }
+          ],
+        ]);
 
-        // await table.insertRows([
-        //   [
-        //     { column: nameColumn, value: itemInfo[i].name },
-        //     { column: userColumn, value: transactionUser },
-        //     { column: priceColumn, value: itemInfo[i].totalPriceWithoutTaxes },
-        //     { column: UIDColumn, value: itemInfo[i].uniqueId },
-        //     { column: quantityColumn, value: itemInfo[i].quantity },
-        //     { column: imputableColumn, value: itemInfo[i].taxable },
-        //     { column: facturaColumn, value: invoiceNumber },
-        //     { column: idPagoColumn, value: paymentTransactionId },
-        //     { column: agenteColumn, value: userAgent },
-        //     { column: ipColumn, value: ipAddress },
-        //   ],
-        // ]);
+        }
 
         return {
         statusCode: 200,
