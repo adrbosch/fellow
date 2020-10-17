@@ -36,7 +36,9 @@ exports.handler = async (event, context) => {
         const transactionUser = userInfo.email;
 
         const table = await codajs.getTable(process.env.GASTBY_CODA_DOC, process.env.GATSBY_CODA_TABLE);
-
+        
+        try {
+        
         for (var i = 0; i < itemInfo.length; i++) {
 
         await table.insertRows([
@@ -46,7 +48,7 @@ exports.handler = async (event, context) => {
             { column: priceColumn, value: itemInfo[i].totalPriceWithoutTaxes },
             { column: UIDColumn, value: itemInfo[i].uniqueId },
             { column: quantityColumn, value: itemInfo[i].quantity },
-            { column: imputableColumn, value: itemInfo[i].taxable },
+            // { column: imputableColumn, value: itemInfo[i].taxable },
             // { column: facturaColumn, value: invoiceNumber },
             // { column: idPagoColumn, value: paymentTransactionId },
             // { column: agenteColumn, value: userAgent },
@@ -55,12 +57,20 @@ exports.handler = async (event, context) => {
         ]);
 
         }
-
+      
         return {
-        statusCode: 200,
-        body: `Hello, ${transactionUser}! Your info has been sent 👋`
-        // body: JSON.stringify(orderCompleted)
-        };
+          statusCode: 200,
+          body: `Hello, ${transactionUser}! Your info has been sent 👋`
+          // body: JSON.stringify(orderCompleted)
+          };
+
+      } catch (err) {
+        return {
+          statusCode: 403,
+          body: JSON.stringify(err)
+          // body: JSON.stringify(orderCompleted)
+          };
+      }
       
     } else {
   
